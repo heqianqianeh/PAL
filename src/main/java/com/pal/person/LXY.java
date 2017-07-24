@@ -2,11 +2,8 @@ package com.pal.person;
 
 import com.pal.consts.DataConfig;
 import com.pal.enums.WalkDir;
-import com.pal.util.ConfigUtil;
-import com.pal.util.PropUtil;
 
 import javax.imageio.ImageIO;
-import javax.xml.crypto.Data;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.File;

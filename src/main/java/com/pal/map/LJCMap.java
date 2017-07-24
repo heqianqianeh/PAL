@@ -2,6 +2,7 @@ package com.pal.map;
 
 import com.pal.consts.Const;
 import com.pal.person.LXY;
+import com.pal.person.NH;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -95,8 +96,11 @@ public class LJCMap extends Map {
             @Override
             public void run() {
                 while (true) {
+                    //阿旺婶图片下标
                     awIndex = (azIndex + 1) > 16 ? 0 : (azIndex + 1);
+                    //阿朱图片下标
                     azIndex = (azIndex + 1) > 5 ? 0 : (azIndex + 1);
+                    //女孩
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException e) {
