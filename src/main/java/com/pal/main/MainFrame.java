@@ -5,6 +5,7 @@ import com.pal.listener.MKeyListener;
 import com.pal.map.InnMap;
 import com.pal.map.LJCMap;
 import com.pal.map.Map;
+import com.pal.map.MenuLoop;
 
 import javax.swing.*;
 
@@ -12,6 +13,11 @@ import javax.swing.*;
  * 主窗体类
  */
 public class MainFrame extends JFrame {
+
+    /**
+     * 开机动画
+     */
+    private MenuLoop menuLoop = new MenuLoop();
 
     /**
      * 李家村场景
@@ -33,8 +39,7 @@ public class MainFrame extends JFrame {
         //关闭窗体时 关闭当前程序
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         //当前默认为李家村
-        this.add(currentMap);
-        //this.add(mainMenu);
+        this.add(menuLoop);
         //键盘监听事件注册
         this.addKeyListener(new MKeyListener(this));
         //可见性
@@ -48,4 +53,6 @@ public class MainFrame extends JFrame {
     public void setCurrentMap(Map currentMap) {
         this.currentMap = currentMap;
     }
+
+
 }

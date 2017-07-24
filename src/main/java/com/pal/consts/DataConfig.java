@@ -15,13 +15,17 @@ public interface DataConfig {
     int MAIN_FRAME_W = ConfigUtil.getIntegerProperties("mainframe.w");
     int MAIN_FRAME_H = ConfigUtil.getIntegerProperties("mainframe.h");
 
-     /*================菜单=================*/
-     int MAIN_MENU_BG_W = ConfigUtil.getIntegerProperties("mainmenu.bg.w");
+    /*================动画=================*/
+    int MOVIE_W = ConfigUtil.getIntegerProperties("movie.w");
+    int MOVIE_H = ConfigUtil.getIntegerProperties("movie.h");
+
+    /*================菜单=================*/
+    int MAIN_MENU_BG_W = ConfigUtil.getIntegerProperties("mainmenu.bg.w");
     int MAIN_MENU_BG_H = ConfigUtil.getIntegerProperties("mainmenu.bg.h");
     int MAIN_MENU_BTN_W = ConfigUtil.getIntegerProperties("mainmenu.btn.w");
     int MAIN_MENU_BTN_H = ConfigUtil.getIntegerProperties("mainmenu.btn.h");
 
     /*================人物==================*/
-    int LXY_X =  ConfigUtil.getIntegerProperties("lxy.x");
-    int LXY_Y =  ConfigUtil.getIntegerProperties("lxy.y");
+    int LXY_X = ConfigUtil.getIntegerProperties("lxy.x");
+    int LXY_Y = ConfigUtil.getIntegerProperties("lxy.y");
 }
