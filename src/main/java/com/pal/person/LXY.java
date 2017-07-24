@@ -1,8 +1,12 @@
 package com.pal.person;
 
+import com.pal.consts.DataConfig;
 import com.pal.enums.WalkDir;
+import com.pal.util.ConfigUtil;
+import com.pal.util.PropUtil;
 
 import javax.imageio.ImageIO;
+import javax.xml.crypto.Data;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -12,6 +16,7 @@ import java.io.IOException;
  * 李逍遥--人物
  */
 public class LXY {
+    
 
     /**
      * 李逍遥人物素材
@@ -29,7 +34,7 @@ public class LXY {
     /**
      * 设置李逍遥键盘控制的数组的索引值
      */
-    int upIndex, downIndex, leftIndex, rightIndex;
+    private int upIndex, downIndex, leftIndex, rightIndex;
 
     static {
         try {
@@ -44,20 +49,19 @@ public class LXY {
         }
     }
 
-
     public void paint(Graphics g) {
         switch (walkDir) {
             case DOWN:
-                g.drawImage(IMG_DOWN[downIndex], 400, 300, null);
+                g.drawImage(IMG_DOWN[downIndex], DataConfig.LXY_X, DataConfig.LXY_Y, null);
                 break;
             case LEFT:
-                g.drawImage(IMG_LEFT[leftIndex], 400, 300, null);
+                g.drawImage(IMG_LEFT[leftIndex],DataConfig.LXY_X, DataConfig.LXY_Y, null);
                 break;
             case RIGHT:
-                g.drawImage(IMG_RIGHT[rightIndex], 400, 300, null);
+                g.drawImage(IMG_RIGHT[rightIndex],DataConfig.LXY_X, DataConfig.LXY_Y, null);
                 break;
             case UP:
-                g.drawImage(IMG_UP[upIndex], 400, 300, null);
+                g.drawImage(IMG_UP[upIndex],DataConfig.LXY_X, DataConfig.LXY_Y, null);
                 break;
             default:
                 break;

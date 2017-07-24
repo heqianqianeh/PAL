@@ -11,7 +11,7 @@ import java.awt.event.KeyEvent;
 
 /**
  * MKeyListener
- * 自定义
+ * 主窗体键盘监听事件
  * Created by heqianqian on 2017/7/23.
  */
 public class MKeyListener extends KeyAdapter {

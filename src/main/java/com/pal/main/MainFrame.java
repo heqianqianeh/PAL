@@ -1,6 +1,7 @@
 package com.pal.main;
 
 import com.pal.consts.Const;
+import com.pal.consts.DataConfig;
 import com.pal.listener.MKeyListener;
 import com.pal.map.InnMap;
 import com.pal.map.LJCMap;
@@ -15,6 +16,8 @@ import javax.swing.*;
  * 主窗体类
  */
 public class MainFrame extends JFrame{
+
+
     /**
      * 李家村场景
      */
@@ -26,7 +29,7 @@ public class MainFrame extends JFrame{
 
     public MainFrame() {
         //设置窗体的位置 大小
-        this.setBounds(100, 100, 800, 600);
+        this.setBounds(DataConfig.MAIN_FRAME_X,DataConfig.MAIN_FRAME_Y , DataConfig.MAIN_FRAME_W, DataConfig.MAIN_FRAME_H);
         //关闭窗体时 关闭当前程序
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         //当前默认为李家村

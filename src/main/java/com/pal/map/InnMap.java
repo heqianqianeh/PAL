@@ -36,7 +36,7 @@ public class InnMap extends Map {
     /**
      * 是否靠近李家村
      */
-    private boolean isCloseToVillage;//TODO
+    private boolean isCloseToVillage;
 
     // 静态代码块 构造代码块
     static {

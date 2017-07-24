@@ -97,13 +97,11 @@ public class LJCMap extends Map {
                 while (true) {
                     awIndex = (azIndex + 1) > 16 ? 0 : (azIndex + 1);
                     azIndex = (azIndex + 1) > 5 ? 0 : (azIndex + 1);
-                    //休眠
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    //重绘
                     repaint();
                 }
             }
