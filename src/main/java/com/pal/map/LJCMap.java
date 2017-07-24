@@ -16,6 +16,10 @@ import java.io.IOException;
  * 李家村--场景
  */
 public class LJCMap extends Map {
+	/**
+	 * 李家村地图的名称
+	 */
+	private static final String MAP_NAME = Const.VILLAGE_LI;
     /**
      * 李家村场景图
      */
@@ -134,5 +138,5 @@ public class LJCMap extends Map {
         //从李家村靠近客栈
         return isCloseToInn ? Const.INN : null;
     }
-
+    
 }

@@ -13,7 +13,7 @@ import javax.swing.*;
  * 主窗体类
  */
 public class MainFrame extends JFrame {
-
+	
     /**
      * 开机动画
      */
@@ -39,7 +39,7 @@ public class MainFrame extends JFrame {
         //关闭窗体时 关闭当前程序
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         //当前默认为李家村
-        this.add(menuLoop);
+        this.add(currentMap);
         //键盘监听事件注册
         this.addKeyListener(new MKeyListener(this));
         //可见性

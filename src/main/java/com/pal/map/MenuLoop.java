@@ -12,8 +12,7 @@ import javax.swing.*;
 
 
 public class MenuLoop extends JPanel {
-
-
+	
     private static Image[] IMG_MENULOOP = new Image[180];
 
     /**

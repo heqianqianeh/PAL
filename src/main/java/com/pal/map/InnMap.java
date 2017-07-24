@@ -13,6 +13,12 @@ import java.io.IOException;
  * 客栈场景
  */
 public class InnMap extends Map {
+	
+	/**
+	 * 客栈地图的名称
+	 */
+	private static final String MAP_NAME = Const.INN;
+	
     /**
      * 客栈背景图
      */
