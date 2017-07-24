@@ -110,6 +110,11 @@ public class InnMap extends Map {
         return isCloseToVillage ? Const.VILLAGE_LI : null;
     }
 
+    @Override
+    public int loopPic() {
+        return 0;
+    }
+
     public void run() {
         new Thread(new Runnable() {
             @Override

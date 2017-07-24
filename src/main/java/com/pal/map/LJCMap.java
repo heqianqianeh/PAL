@@ -2,13 +2,10 @@ package com.pal.map;
 
 import com.pal.consts.Const;
 import com.pal.person.LXY;
-import com.pal.person.NH;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -74,12 +71,6 @@ public class LJCMap extends Map {
         }
     }
 
-    public LJCMap() {
-        run();
-        //鼠标监听事件的注册 必须放在李家村里 不能放在主场景里
-        //this.addMouseListener(this);
-    }
-
     @Override
     public void paint(Graphics g) {
         g.drawImage(IMG_VILLAGE, -300 - xShift, -200 - yShift, null);
@@ -94,26 +85,22 @@ public class LJCMap extends Map {
         isCloseToInn = g2d.hit(new Rectangle(414, 377, 50, 50), new Polygon(xpoints, ypoints, xpoints.length), true);
     }
 
-    public void run() {
-        //匿名内部类
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    //阿旺婶图片下标
-                    awIndex = (azIndex + 1) > 16 ? 0 : (azIndex + 1);
-                    //阿朱图片下标
-                    azIndex = (azIndex + 1) > 5 ? 0 : (azIndex + 1);
-                    //女孩
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    repaint();
-                }
+    public int loopPic() {
+        boolean isLoop = true;
+        while (isLoop) {
+            //阿旺婶图片下标
+            awIndex = (azIndex + 1) > 16 ? 0 : (azIndex + 1);
+            //阿朱图片下标
+            azIndex = (azIndex + 1) > 5 ? 0 : (azIndex + 1);
+            //女孩
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        }).start();
+            repaint();
+        }
+        return -1;
     }
 
     public String keyPressed(KeyEvent e) {

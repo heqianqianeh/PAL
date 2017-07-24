@@ -84,10 +84,4 @@ public class MainMenu extends JPanel {
         g.drawImage(IMG_SAVE_GAME[0], BTN_X_INDEX, BTN_Y_INDEX + BTN_PADDING * 2, BTN_X_INDEX + 700, BTN_Y_INDEX + DataConfig.MAIN_MENU_BG_H + (BTN_PADDING * 3), 0, 0, DataConfig.MAIN_MENU_BG_W, DataConfig.MAIN_MENU_BG_H, null);
     }
 
-    public MainMenu() {
-    }
-
-    public void mousePressed(MouseEvent e) {
-    }
-
 }
