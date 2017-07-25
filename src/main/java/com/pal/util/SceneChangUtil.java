@@ -1,11 +1,7 @@
 package com.pal.util;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 import com.pal.consts.Const;
 import com.pal.main.MainFrame;
-import com.pal.map.Map;
 
 /**
  * 
@@ -21,13 +17,13 @@ public class SceneChangUtil {
 	 * @param fromMap 当前地图
 	 * @param msg 当前地图名称
 	 */
-	public static void changeScene(MainFrame mainFrame, Map fromMap, String toMapName) {
+	public static void changeScene(MainFrame mainFrame, com.pal.map.Map fromMap, String toMapName) {
 	    mainFrame.remove(fromMap);
 		
-	    Map toMap = null;
+	    com.pal.map.Map toMap = null;
 		try {
 			Class<?> c = Class.forName(PropUtil.getString(PropUtil.loadProperties(Const.FILE_PATH), toMapName));
-			toMap = (Map) c.newInstance();
+			toMap = (com.pal.map.Map) c.newInstance();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 

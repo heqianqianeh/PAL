@@ -1,10 +1,6 @@
 package com.pal.listener;
 
-import com.pal.consts.Const;
 import com.pal.main.MainFrame;
-import com.pal.map.InnMap;
-import com.pal.map.LJCMap;
-import com.pal.map.Map;
 import com.pal.util.SceneChangUtil;
 
 import java.awt.event.KeyAdapter;
@@ -25,7 +21,7 @@ public class MKeyListener extends KeyAdapter {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        Map currentMap = mainFrame.getCurrentMap();
+        com.pal.map.Map currentMap = mainFrame.getCurrentMap();
         String msg = currentMap.keyPressed(e);
         //根据 keyPressed 返回值来进行判断  空串在当前场景 ，如果为客栈 ，切换到客栈场景 移除李家村场景 ，如果为李家村，切换到李家村，移除客栈场景
         if (msg != null) {

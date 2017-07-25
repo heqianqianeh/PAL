@@ -138,5 +138,10 @@ public class LJCMap extends Map {
         //从李家村靠近客栈
         return isCloseToInn ? Const.INN : null;
     }
-    
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        //TODO
+    }
+
 }
