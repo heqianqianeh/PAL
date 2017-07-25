@@ -1,13 +1,17 @@
 package com.pal.main;
 
-import com.pal.consts.DataConfig;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+import com.pal.consts.DataConfig;
+import com.pal.listener.MMouseListener;
 
 /**
  * MainMenu
@@ -82,6 +86,38 @@ public class MainMenu extends JPanel {
         g.drawImage(IMG_OLD_MEMORY[0], BTN_X_INDEX, BTN_Y_INDEX + BTN_PADDING, BTN_X_INDEX + 700, BTN_Y_INDEX + DataConfig.MAIN_MENU_BG_H + BTN_PADDING, 0, 0, DataConfig.MAIN_MENU_BG_W, DataConfig.MAIN_MENU_BG_H, null);
         ////save game
         g.drawImage(IMG_SAVE_GAME[0], BTN_X_INDEX, BTN_Y_INDEX + BTN_PADDING * 2, BTN_X_INDEX + 700, BTN_Y_INDEX + DataConfig.MAIN_MENU_BG_H + (BTN_PADDING * 3), 0, 0, DataConfig.MAIN_MENU_BG_W, DataConfig.MAIN_MENU_BG_H, null);
+    }
+
+    public MainMenu() {
+    	//鼠标监听事件注册
+        this.addMouseListener(new MMouseListener(this));
+    }
+
+    public void mousePressed(MouseEvent e) {
+    	if (e.getX() >= BTN_X_INDEX && e.getX() <= BTN_X_INDEX+700) {
+			if (e.getY() >= 165 && e.getY() <= 197) {
+		        //new game
+				this.getGraphics().drawImage(IMG_NEW_GAME[1], BTN_X_INDEX, BTN_Y_INDEX, BTN_X_INDEX + 700, BTN_Y_INDEX + DataConfig.MAIN_MENU_BG_H, 0, 0, DataConfig.MAIN_MENU_BG_W, DataConfig.MAIN_MENU_BG_H, null);
+				//old game
+				this.getGraphics().drawImage(IMG_OLD_MEMORY[0], BTN_X_INDEX, BTN_Y_INDEX + BTN_PADDING, BTN_X_INDEX + 700, BTN_Y_INDEX + DataConfig.MAIN_MENU_BG_H + BTN_PADDING, 0, 0, DataConfig.MAIN_MENU_BG_W, DataConfig.MAIN_MENU_BG_H, null);
+				////save game
+				this.getGraphics().drawImage(IMG_SAVE_GAME[0], BTN_X_INDEX, BTN_Y_INDEX + BTN_PADDING * 2, BTN_X_INDEX + 700, BTN_Y_INDEX + DataConfig.MAIN_MENU_BG_H + (BTN_PADDING * 3), 0, 0, DataConfig.MAIN_MENU_BG_W, DataConfig.MAIN_MENU_BG_H, null);
+			} else if (e.getY() >= 215 && e.getY() <= 246) {
+				//new game
+				this.getGraphics().drawImage(IMG_NEW_GAME[0], BTN_X_INDEX, BTN_Y_INDEX, BTN_X_INDEX + 700, BTN_Y_INDEX + DataConfig.MAIN_MENU_BG_H, 0, 0, DataConfig.MAIN_MENU_BG_W, DataConfig.MAIN_MENU_BG_H, null);
+				//old game
+				this.getGraphics().drawImage(IMG_OLD_MEMORY[1], BTN_X_INDEX, BTN_Y_INDEX + BTN_PADDING, BTN_X_INDEX + 700, BTN_Y_INDEX + DataConfig.MAIN_MENU_BG_H + BTN_PADDING, 0, 0, DataConfig.MAIN_MENU_BG_W, DataConfig.MAIN_MENU_BG_H, null);
+				////save game
+				this.getGraphics().drawImage(IMG_SAVE_GAME[0], BTN_X_INDEX, BTN_Y_INDEX + BTN_PADDING * 2, BTN_X_INDEX + 700, BTN_Y_INDEX + DataConfig.MAIN_MENU_BG_H + (BTN_PADDING * 3), 0, 0, DataConfig.MAIN_MENU_BG_W, DataConfig.MAIN_MENU_BG_H, null);
+			} else if (e.getY() >= 265 && e.getY() <= 303) {
+				//new game
+				this.getGraphics().drawImage(IMG_NEW_GAME[0], BTN_X_INDEX, BTN_Y_INDEX, BTN_X_INDEX + 700, BTN_Y_INDEX + DataConfig.MAIN_MENU_BG_H, 0, 0, DataConfig.MAIN_MENU_BG_W, DataConfig.MAIN_MENU_BG_H, null);
+				//old game
+				this.getGraphics().drawImage(IMG_OLD_MEMORY[0], BTN_X_INDEX, BTN_Y_INDEX + BTN_PADDING, BTN_X_INDEX + 700, BTN_Y_INDEX + DataConfig.MAIN_MENU_BG_H + BTN_PADDING, 0, 0, DataConfig.MAIN_MENU_BG_W, DataConfig.MAIN_MENU_BG_H, null);
+				////save game
+				this.getGraphics().drawImage(IMG_SAVE_GAME[1], BTN_X_INDEX, BTN_Y_INDEX + BTN_PADDING * 2, BTN_X_INDEX + 700, BTN_Y_INDEX + DataConfig.MAIN_MENU_BG_H + (BTN_PADDING * 3), 0, 0, DataConfig.MAIN_MENU_BG_W, DataConfig.MAIN_MENU_BG_H, null);
+			}
+		}
     }
 
 }

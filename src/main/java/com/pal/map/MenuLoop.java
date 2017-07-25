@@ -12,11 +12,7 @@ import javax.swing.*;
 
 
 public class MenuLoop extends JPanel {
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> af07240329e9fbdeb61e2973c83f52c0ddf85404
     private static Image[] IMG_MENULOOP = new Image[180];
 
     /**
@@ -34,23 +30,30 @@ public class MenuLoop extends JPanel {
         }
     }
 
+    public MenuLoop() {
+        show();
+    }
+
     public void paint(Graphics g) {
         g.drawImage(IMG_MENULOOP[menuIndex], 0, 0, DataConfig.MAIN_FRAME_W, DataConfig.MAIN_FRAME_H, 0, 0, DataConfig.MOVIE_W, DataConfig.MOVIE_H, null);
     }
 
-    public int loopPic() {
-        boolean isLoop = true;
-        while (isLoop) {
-            if (++menuIndex >= 179) {
-                return -1;
+    public void show() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    if (++menuIndex >= 179) {
+                        break;
+                    }
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    repaint();
+                }
             }
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            repaint();
-        }
-        return -1;
+        }).start();
     }
 }
