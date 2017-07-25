@@ -5,16 +5,17 @@ import javax.swing.WindowConstants;
 
 import com.pal.consts.DataConfig;
 import com.pal.listener.MKeyListener;
-import com.pal.listener.MMouseListener;
 import com.pal.map.LJCMap;
 import com.pal.map.Map;
 import com.pal.map.MenuLoop;
+
+import java.awt.*;
 
 /**
  * 主窗体类
  */
 public class MainFrame extends JFrame {
-	
+
     /**
      * 开机动画
      */
@@ -40,11 +41,41 @@ public class MainFrame extends JFrame {
         //关闭窗体时 关闭当前程序
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         //当前默认为李家村
-        this.add(mainMenu);
+        this.add(menuLoop);
         //键盘监听事件注册
         this.addKeyListener(new MKeyListener(this));
         //可见性
         this.setVisible(true);
+        //开始动画
+        action();
+    }
+
+
+    public void action() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int isEnd = menuLoop.startPlay();
+                if (isEnd == -1) {
+                    removeCom(menuLoop);
+                    addCom(mainMenu);
+                    repaintCom();
+                }
+            }
+        }).start();
+    }
+
+    public void removeCom(Component component) {
+        this.remove(component);
+    }
+
+    public void addCom(Component component) {
+        this.add(component);
+    }
+
+    public void repaintCom() {
+        this.validate();
+        this.repaint();
     }
 
     public Map getCurrentMap() {
@@ -55,13 +86,11 @@ public class MainFrame extends JFrame {
         this.currentMap = currentMap;
     }
 
-	public MainMenu getMainMenu() {
-		return mainMenu;
-	}
+    public MainMenu getMainMenu() {
+        return mainMenu;
+    }
 
-	public void setMainMenu(MainMenu mainMenu) {
-		this.mainMenu = mainMenu;
-	}
-
-
+    public void setMainMenu(MainMenu mainMenu) {
+        this.mainMenu = mainMenu;
+    }
 }
