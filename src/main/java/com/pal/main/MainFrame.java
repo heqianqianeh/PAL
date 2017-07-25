@@ -7,7 +7,8 @@ import com.pal.consts.DataConfig;
 import com.pal.listener.MKeyListener;
 import com.pal.map.LJCMap;
 import com.pal.map.Map;
-import com.pal.map.MenuLoop;
+import com.pal.scene.MainMenu;
+import com.pal.scene.StartCartoon;
 
 import java.awt.*;
 
@@ -19,7 +20,7 @@ public class MainFrame extends JFrame {
     /**
      * 开机动画
      */
-    private MenuLoop menuLoop = new MenuLoop();
+    private StartCartoon startCartoon = new StartCartoon();
 
     /**
      * 李家村场景
@@ -29,19 +30,20 @@ public class MainFrame extends JFrame {
     /**
      * 主菜单
      */
-    private MainMenu mainMenu = new MainMenu();
+    private MainMenu mainMenu;
 
     public static void main(String[] args) {
         new MainFrame();
     }
 
     public MainFrame() {
+        init();
         //设置窗体的位置 大小
         this.setBounds(DataConfig.MAIN_FRAME_X, DataConfig.MAIN_FRAME_Y, DataConfig.MAIN_FRAME_W, DataConfig.MAIN_FRAME_H);
         //关闭窗体时 关闭当前程序
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         //当前默认为李家村
-        this.add(menuLoop);
+        this.add(startCartoon);
         //键盘监听事件注册
         this.addKeyListener(new MKeyListener(this));
         //可见性
@@ -50,14 +52,17 @@ public class MainFrame extends JFrame {
         action();
     }
 
+    private void init() {
+        mainMenu = new MainMenu(this);
+    }
 
     public void action() {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                int isEnd = menuLoop.startPlay();
+                int isEnd = startCartoon.startPlay();
                 if (isEnd == -1) {
-                    removeCom(menuLoop);
+                    removeCom(startCartoon);
                     addCom(mainMenu);
                     repaintCom();
                 }
@@ -78,6 +83,12 @@ public class MainFrame extends JFrame {
         this.repaint();
     }
 
+    public void switchSceneToLJCMap() {
+        this.remove(mainMenu);
+        this.add(currentMap);
+        repaintCom();
+    }
+
     public Map getCurrentMap() {
         return currentMap;
     }
@@ -86,11 +97,4 @@ public class MainFrame extends JFrame {
         this.currentMap = currentMap;
     }
 
-    public MainMenu getMainMenu() {
-        return mainMenu;
-    }
-
-    public void setMainMenu(MainMenu mainMenu) {
-        this.mainMenu = mainMenu;
-    }
 }

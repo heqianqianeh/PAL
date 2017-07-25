@@ -10,6 +10,9 @@ import javax.imageio.ImageIO;
 
 import com.pal.enums.WalkDir;
 
+/**
+ * 客栈女孩--人物
+ */
 public class NH {
     /*女孩素材*/
     private final static Image[] IMG_UP = new Image[8];
@@ -18,7 +21,6 @@ public class NH {
     private final static Image[] IMG_RIGHT = new Image[8];
     private WalkDir walkDir = WalkDir.DOWN;
 
-    //设置女孩键盘控制的数组的索引值
     private int upIndex, downIndex, leftIndex, rightIndex;
 
     static {

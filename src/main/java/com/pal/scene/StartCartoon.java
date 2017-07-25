@@ -1,4 +1,4 @@
-package com.pal.map;
+package com.pal.scene;
 
 import com.pal.consts.DataConfig;
 
@@ -10,8 +10,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-
-public class MenuLoop extends JPanel {
+/**
+ * 开机动画
+ */
+public class StartCartoon extends JPanel {
 
     private static Image[] IMG_MENULOOP = new Image[180];
 

@@ -3,19 +3,18 @@ package com.pal.listener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import com.pal.consts.DataConfig;
-import com.pal.main.MainFrame;
-import com.pal.main.MainMenu;
+import com.pal.scene.MainMenu;
 
 /**
- * MMouseListener
- * 自定义鼠标点击事件
+ * MainMenuMouseListener
+ * 主菜单点击监听
  * Created by heqianqian on 2017/7/24.
  */
-public class MMouseListener extends MouseAdapter {
+public class MainMenuMouseListener extends MouseAdapter {
+
 	private MainMenu mainFrame;
 	
-    public MMouseListener(MainMenu mainMenu) {
+    public MainMenuMouseListener(MainMenu mainMenu) {
     	this.mainFrame = mainMenu;
     }
 
