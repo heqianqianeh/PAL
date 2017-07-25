@@ -5,6 +5,7 @@ import javax.swing.WindowConstants;
 
 import com.pal.consts.DataConfig;
 import com.pal.listener.MKeyListener;
+import com.pal.listener.MMouseListener;
 import com.pal.map.LJCMap;
 import com.pal.map.Map;
 import com.pal.scene.MainMenu;
@@ -19,6 +20,7 @@ public class MainFrame extends JFrame {
 
     /**
      * 开机动画
+     * 
      */
     private StartCartoon startCartoon = new StartCartoon();
 
@@ -43,9 +45,10 @@ public class MainFrame extends JFrame {
         //关闭窗体时 关闭当前程序
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         //当前默认为李家村
-        this.add(startCartoon);
+        this.add(mainMenu);
         //键盘监听事件注册
         this.addKeyListener(new MKeyListener(this));
+        this.addMouseListener(new MMouseListener(this));
         //可见性
         this.setVisible(true);
         //开始动画
