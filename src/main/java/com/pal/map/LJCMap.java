@@ -1,6 +1,7 @@
 package com.pal.map;
 
 import com.pal.consts.Const;
+import com.pal.dialog.SkillPanel;
 import com.pal.person.LJCNPC;
 import com.pal.person.LXY;
 import com.pal.util.BounardCheckUtil;
@@ -22,6 +23,8 @@ public class LJCMap extends Map {
      */
     private static Image IMG_VILLAGE;
 
+    private static Image IMG_SKILL;
+
     /**
      * 场景内的静态NPC
      */
@@ -31,6 +34,8 @@ public class LJCMap extends Map {
      * 李逍遥对象
      */
     private LXY lxy = new LXY();
+
+    private SkillPanel skillPanel = new SkillPanel();
 
     /**
      * 偏移量
@@ -59,6 +64,7 @@ public class LJCMap extends Map {
 
     public LJCMap() {
         run();
+        this.add(skillPanel);
         ljcnpc = new LJCNPC(this);
     }
 
@@ -76,6 +82,7 @@ public class LJCMap extends Map {
 
         g.drawImage(IMG_VILLAGE, -300 - xShift, -200 - yShift, null);
         ljcnpc.paint(g, xShift, yShift);
+        skillPanel.paint(g);
         //方法连动 通过李家村的paint方法 调用李逍遥的paint方法
         lxy.paint(g);
         int[] xpoints = {715 - xShift, 665 - xShift, 737 - xShift, 771 - xShift};
@@ -127,11 +134,11 @@ public class LJCMap extends Map {
         //重绘
         repaint();
         //从李家村靠近客栈
-        if (isCloseToInn){
+        if (isCloseToInn) {
             return Const.INN;
-        }else if (isCloseToFight){
+        } else if (isCloseToFight) {
             return Const.FOREST;
-        }else{
+        } else {
             return null;
         }
     }

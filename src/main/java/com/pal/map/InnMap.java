@@ -141,7 +141,7 @@ public class InnMap extends Map {
         if (x >= 0 && x <= 782 && y >= 363 && y <= 461) {
             if (drawDialog) {
                 int i = dialogPanel.mousePressed(e);
-                if (i==-1){
+                if (i == -1) {
                     drawDialog = false;
                 }
             }

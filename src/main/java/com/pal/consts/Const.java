@@ -16,4 +16,11 @@ public interface Const {
     String VILLAGE_LI = "李家村";
     String INN = "客栈";
     String FOREST = "树林";
+
+    /*==========================技能名称=========================*/
+    String TALK = "谈话";
+    String DISKILL = "地裂";
+    String SMZHSHILL = "三昧真火";
+    String WJJSKILL = "万剑诀";
+    String WJCXSKILL = "万剑穿心";
 }
