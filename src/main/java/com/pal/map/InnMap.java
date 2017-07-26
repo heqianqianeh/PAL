@@ -9,6 +9,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import com.pal.consts.Const;
+import com.pal.dialog.DialogPanel;
 import com.pal.listener.MapMouseListener;
 import com.pal.person.LXY;
 import com.pal.person.NH;
@@ -18,11 +19,6 @@ import com.pal.util.MouseUtil;
  * 客栈场景
  */
 public class InnMap extends Map {
-
-    /**
-     * 客栈地图的名称
-     */
-    private static final String MAP_NAME = Const.INN;
 
     /**
      * 客栈背景图
@@ -59,9 +55,11 @@ public class InnMap extends Map {
      */
     private static Image innHost;
 
+    private DialogPanel dialogPanel;
 
-    private Graphics graphics;
+    private MapMouseListener mapMouseListener;
 
+    private boolean drawDialog;
 
     static {
         try {
@@ -73,8 +71,10 @@ public class InnMap extends Map {
     }
 
     public InnMap() {
+        this.setName("inn");
         run();
-        this.addMouseListener(new MapMouseListener(this));
+        mapMouseListener = new MapMouseListener(this);
+        this.addMouseListener(mapMouseListener);
     }
 
     @Override
@@ -89,6 +89,9 @@ public class InnMap extends Map {
         //判断李逍遥是否靠近客栈
         Graphics2D g2d = (Graphics2D) g;
         isCloseToVillage = g2d.hit(new Rectangle(406, 374, 50, 50), new Polygon(xpoints, ypoints, xpoints.length), true);
+        if (drawDialog) {
+            dialogPanel.paint(g);
+        }
     }
 
     @Override
@@ -115,14 +118,22 @@ public class InnMap extends Map {
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
-        if (MouseUtil.judgeMouse(370, 430, 270, 370, xShift, yShift)) {
-            this.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            //触发人物对话
-            triggerDialog();
-        } else {
-            this.setCursor(Cursor.getDefaultCursor());
+    public int mousePressed(MouseEvent e) {
+        System.out.println(e.getComponent().getName());
+        int x = e.getX() + xShift;
+        int y = e.getY() + yShift;
+        if (x >= 390 && x <= 436 && y >= 285 && y <= 365) {
+            triggerDialog(e);
         }
+        if (x >= 0 && x <= 782 && y >= 363 && y <= 461) {
+            if (drawDialog) {
+                int i = dialogPanel.mousePressed(e);
+                if (i==-1){
+                    drawDialog = false;
+                }
+            }
+        }
+        return 0;
     }
 
     public void run() {
@@ -135,26 +146,13 @@ public class InnMap extends Map {
                     //判断鼠标位置
                     judgeMouse();
                     try {
-						Thread.sleep(350);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+                        Thread.sleep(350);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }).start();
-    }
-
-    /**
-     * 触发对话
-     */
-    private void triggerDialog() {
-        System.out.println("触发对话!");
-        //new DialogPanel().paint(graphics);
-        graphics.setColor(Color.red);
-        graphics.fillRect(100,100,200,200);
-        this.validate();
-        this.repaint();
     }
 
     public int getxShift() {
@@ -166,14 +164,30 @@ public class InnMap extends Map {
     }
 
     /**
+     * 触发对话
+     *
+     * @param e
+     */
+    private void triggerDialog(MouseEvent e) {
+        drawDialog = true;
+        dialogPanel = new DialogPanel();
+        dialogPanel.setName("dialog");
+        dialogPanel.addMouseListener(mapMouseListener);
+        dialogPanel.setFocusable(true);
+        this.validate();
+        this.repaint();
+    }
+
+    /**
      * 判断鼠标位置
      */
     private void judgeMouse() {
         if (MouseUtil.judgeMouse(700, 764, 400, 500, xShift, yShift)) {
-            System.out.println("judgeMouse: changeCursor");
             this.setCursor(new Cursor(Cursor.HAND_CURSOR));
         } else {
             this.setCursor(Cursor.getDefaultCursor());
         }
     }
+
+
 }

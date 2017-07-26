@@ -79,9 +79,6 @@ public class LJCMap extends Map {
             @Override
             public void run() {
                 while (true) {
-                    //TODO 除留取余
-                    //阿旺婶图片下标
-
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException e) {
@@ -117,8 +114,9 @@ public class LJCMap extends Map {
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
+    public int mousePressed(MouseEvent e) {
         //TODO
+        return 0;
     }
 
 }

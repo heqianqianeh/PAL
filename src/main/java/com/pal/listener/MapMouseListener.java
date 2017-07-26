@@ -13,13 +13,13 @@ public class MapMouseListener extends MouseAdapter {
 
     private Map map;
 
-
     public MapMouseListener(Map map) {
         this.map = map;
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
+        System.out.println(e.getComponent().getName());
         map.mousePressed(e);
     }
 }

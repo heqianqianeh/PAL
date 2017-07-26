@@ -14,5 +14,5 @@ public abstract class Map extends JPanel {
      */
     public abstract String keyPressed(KeyEvent e);
 
-    public abstract void mousePressed(MouseEvent e);
+    public abstract int mousePressed(MouseEvent e);
 }

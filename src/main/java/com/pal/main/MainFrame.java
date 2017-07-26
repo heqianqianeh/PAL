@@ -8,6 +8,7 @@ import com.pal.listener.MKeyListener;
 import com.pal.listener.MMouseListener;
 import com.pal.map.InnMap;
 import com.pal.map.LJCMap;
+import com.pal.map.Map;
 import com.pal.scene.MainMenu;
 import com.pal.scene.StartCartoon;
 
@@ -26,7 +27,7 @@ public class MainFrame extends JFrame {
     /**
      * 李家村场景
      */
-    private com.pal.map.Map currentMap = new LJCMap();
+    private Map currentMap = new LJCMap();
 
     /**
      * 主菜单

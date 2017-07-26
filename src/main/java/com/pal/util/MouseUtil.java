@@ -24,7 +24,6 @@ public class MouseUtil {
         Point location = MouseInfo.getPointerInfo().getLocation();
         int x = location.x + xShift;
         int y = location.y + yShift;
-        System.out.println("x="+x+" y="+y);
         return (x >= startX && x <= endX && y >= startY && y <= endY);
     }
 }
