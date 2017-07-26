@@ -6,6 +6,7 @@ import javax.swing.WindowConstants;
 import com.pal.consts.DataConfig;
 import com.pal.listener.MKeyListener;
 import com.pal.listener.MMouseListener;
+import com.pal.map.InnMap;
 import com.pal.map.LJCMap;
 import com.pal.scene.MainMenu;
 import com.pal.scene.StartCartoon;
@@ -19,7 +20,6 @@ public class MainFrame extends JFrame {
 
     /**
      * 开机动画
-     * 
      */
     private StartCartoon startCartoon = new StartCartoon();
 

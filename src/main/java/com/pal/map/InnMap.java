@@ -1,11 +1,6 @@
 package com.pal.map;
 
-import java.awt.Cursor;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Polygon;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -64,6 +59,10 @@ public class InnMap extends Map {
      */
     private static Image innHost;
 
+
+    private Graphics graphics;
+
+
     static {
         try {
             IMG_INN = ImageIO.read(new File("img\\客栈\\0.png"));
@@ -118,10 +117,10 @@ public class InnMap extends Map {
     @Override
     public void mousePressed(MouseEvent e) {
         if (MouseUtil.judgeMouse(370, 430, 270, 370, xShift, yShift)) {
-            System.out.println("mousePressed: changeCursor");
             this.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            //触发人物对话
+            triggerDialog();
         } else {
-            System.out.println("mousePressed: defaultCursor");
             this.setCursor(Cursor.getDefaultCursor());
         }
     }
@@ -144,6 +143,18 @@ public class InnMap extends Map {
                 }
             }
         }).start();
+    }
+
+    /**
+     * 触发对话
+     */
+    private void triggerDialog() {
+        System.out.println("触发对话!");
+        //new DialogPanel().paint(graphics);
+        graphics.setColor(Color.red);
+        graphics.fillRect(100,100,200,200);
+        this.validate();
+        this.repaint();
     }
 
     public int getxShift() {

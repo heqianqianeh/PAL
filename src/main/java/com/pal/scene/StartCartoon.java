@@ -15,16 +15,16 @@ import javax.swing.*;
  */
 public class StartCartoon extends JPanel {
 
-    private static Image[] IMG_MENULOOP = new Image[180];
+    private static Image[] IMG_MENULOOP = new Image[181];
 
     /**
      * 开始动画的数组索引值
      */
-    private int menuIndex;
+    private int menuIndex = 0;
 
     static {
         try {
-            for (int i = 1; i < IMG_MENULOOP.length; i++) {
+            for (int i = 0; i < IMG_MENULOOP.length; i++) {
                 IMG_MENULOOP[i] = ImageIO.read(new File("img\\开始动画\\" + i + ".png"));
             }
         } catch (IOException e) {
@@ -33,15 +33,26 @@ public class StartCartoon extends JPanel {
     }
 
     public void paint(Graphics g) {
-        g.drawImage(IMG_MENULOOP[menuIndex], 0, 0, DataConfig.MAIN_FRAME_W, DataConfig.MAIN_FRAME_H, 0, 0, DataConfig.MOVIE_W, DataConfig.MOVIE_H, null);
-    }
+        if (menuIndex==0){
+            g.drawImage(IMG_MENULOOP[menuIndex], 0, 0, DataConfig.MAIN_FRAME_W, DataConfig.MAIN_FRAME_H, 0, 0, 960, 540, null);
+        }else{
+            g.drawImage(IMG_MENULOOP[menuIndex], 0, 0, DataConfig.MAIN_FRAME_W, DataConfig.MAIN_FRAME_H, 0, 0, DataConfig.MOVIE_W, DataConfig.MOVIE_H, null);
+        }
+     }
 
     /**
      * 开始播放
      */
     public int startPlay() {
         while (true) {
-            if (++menuIndex >= 179) {
+            if (menuIndex==0){
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (++menuIndex >= 180) {
                 return -1;
             }
             try {

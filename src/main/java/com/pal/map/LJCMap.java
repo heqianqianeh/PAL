@@ -1,6 +1,7 @@
 package com.pal.map;
 
 import com.pal.consts.Const;
+import com.pal.person.LJCNPC;
 import com.pal.person.LXY;
 import com.pal.person.NH;
 
@@ -16,34 +17,18 @@ import java.io.IOException;
  * 李家村--场景
  */
 public class LJCMap extends Map {
-	/**
-	 * 李家村地图的名称
-	 */
-	private static final String MAP_NAME = Const.VILLAGE_LI;
+
     /**
      * 李家村场景图
      */
     private static Image IMG_VILLAGE;
-    /**
-     * 阿旺婶
-     */
-    private static Image[] IMG_AWANGSAO = new Image[17];
-    /**
-     * 阿朱
-     */
-    private static Image[] IMG_AZHU = new Image[6];
+
+    private LJCNPC ljcnpc;
+
     /**
      * 李逍遥对象
      */
     private LXY lxy = new LXY();
-    /**
-     * 定义阿旺婶的数组索引值
-     */
-    private int awIndex;
-    /**
-     * 阿朱的数组索引值
-     */
-    private int azIndex;
 
     /**
      * 偏移量
@@ -63,12 +48,6 @@ public class LJCMap extends Map {
     static {
         try {
             IMG_VILLAGE = ImageIO.read(new File("img\\李家村\\0.png"));
-            for (int i = 0; i < IMG_AWANGSAO.length; i++) {
-                IMG_AWANGSAO[i] = ImageIO.read(new File("img\\阿旺婶\\" + i + ".png"));
-            }
-            for (int i = 0; i < IMG_AZHU.length; i++) {
-                IMG_AZHU[i] = ImageIO.read(new File("img\\阿珠喂鸡\\" + i + ".png"));
-            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -76,6 +55,7 @@ public class LJCMap extends Map {
 
     public LJCMap() {
         run();
+        ljcnpc = new LJCNPC(this);
         //鼠标监听事件的注册 必须放在李家村里 不能放在主场景里
         //this.addMouseListener(this);
     }
@@ -83,8 +63,7 @@ public class LJCMap extends Map {
     @Override
     public void paint(Graphics g) {
         g.drawImage(IMG_VILLAGE, -300 - xShift, -200 - yShift, null);
-        g.drawImage(IMG_AWANGSAO[awIndex], 380 - xShift, 300 - yShift, null);
-        g.drawImage(IMG_AZHU[azIndex], 600 - xShift, 300 - yShift, null);
+        ljcnpc.paint(g,xShift,yShift);
         //方法连动 通过李家村的paint方法 调用李逍遥的paint方法
         lxy.paint(g);
         int[] xpoints = {715 - xShift, 665 - xShift, 737 - xShift, 771 - xShift};
@@ -100,11 +79,9 @@ public class LJCMap extends Map {
             @Override
             public void run() {
                 while (true) {
+                    //TODO 除留取余
                     //阿旺婶图片下标
-                    awIndex = (azIndex + 1) > 16 ? 0 : (azIndex + 1);
-                    //阿朱图片下标
-                    azIndex = (azIndex + 1) > 5 ? 0 : (azIndex + 1);
-                    //女孩
+
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException e) {
