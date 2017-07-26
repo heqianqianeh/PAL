@@ -2,6 +2,7 @@ package com.pal.scene;
 
 import com.pal.consts.DataConfig;
 
+import java.applet.AudioClip;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
@@ -22,30 +23,37 @@ public class StartCartoon extends JPanel {
      */
     private int menuIndex = 0;
 
+    /**
+     * 音乐播放
+     */
+    private static AudioClip audio = null;
+
     static {
         try {
             for (int i = 0; i < IMG_MENULOOP.length; i++) {
                 IMG_MENULOOP[i] = ImageIO.read(new File("img\\开始动画\\" + i + ".png"));
             }
+            audio = JApplet.newAudioClip(new File("music\\op.wav").toURL());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void paint(Graphics g) {
-        if (menuIndex==0){
+        if (menuIndex == 0) {
             g.drawImage(IMG_MENULOOP[menuIndex], 0, 0, DataConfig.MAIN_FRAME_W, DataConfig.MAIN_FRAME_H, 0, 0, 960, 540, null);
-        }else{
+        } else {
             g.drawImage(IMG_MENULOOP[menuIndex], 0, 0, DataConfig.MAIN_FRAME_W, DataConfig.MAIN_FRAME_H, 0, 0, DataConfig.MOVIE_W, DataConfig.MOVIE_H, null);
         }
-     }
+    }
 
     /**
      * 开始播放
      */
     public int startPlay() {
+        audio.play();//播放音乐
         while (true) {
-            if (menuIndex==0){
+            if (menuIndex == 0) {
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
@@ -53,6 +61,7 @@ public class StartCartoon extends JPanel {
                 }
             }
             if (++menuIndex >= 180) {
+                audio.stop();
                 return -1;
             }
             try {

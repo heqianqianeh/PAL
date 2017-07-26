@@ -56,6 +56,8 @@ public class InnMap extends Map {
      */
     private static Image innHost;
 
+    private static Image innHostress;
+
     private DialogPanel dialogPanel;
 
     private MapMouseListener mapMouseListener;
@@ -66,6 +68,7 @@ public class InnMap extends Map {
         try {
             IMG_INN = ImageIO.read(new File("img\\客栈\\0.png"));
             innHost = ImageIO.read(new File("img\\NPC\\inn_host.png"));
+            innHostress = ImageIO.read(new File("img\\NPC\\inn_hostress.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -91,6 +94,7 @@ public class InnMap extends Map {
         }
         g.drawImage(IMG_INN, 0 - xShift, 0 - yShift, null);
         g.drawImage(innHost, 380 - xShift, 280 - yShift, null);
+        g.drawImage(innHostress, 66 - xShift, 390 - yShift, null);
         //方法连动 通过李家村的paint方法 调用李逍遥的paint方法
         lxy.paint(g);
         nh.paint(g);
