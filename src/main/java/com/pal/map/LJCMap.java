@@ -3,13 +3,12 @@ package com.pal.map;
 import com.pal.consts.Const;
 import com.pal.person.LJCNPC;
 import com.pal.person.LXY;
-import com.pal.person.NH;
+import com.pal.util.BounardCheckUtil;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -62,6 +61,16 @@ public class LJCMap extends Map {
 
     @Override
     public void paint(Graphics g) {
+        if (BounardCheckUtil.mapIsLoadLeft(0, -300, xShift)) {
+            xShift += SHIFT_LENGTH;
+        } else if (BounardCheckUtil.mapIsLoadHead(0, -200, yShift)) {
+            yShift += SHIFT_LENGTH;
+        } else if (BounardCheckUtil.mapIsLoadRight(1440, -300, xShift)) {
+            xShift -= SHIFT_LENGTH;
+        } else if (BounardCheckUtil.mapIsLoadBottom(1035, -200, yShift)) {
+            yShift -= SHIFT_LENGTH;
+        }
+
         g.drawImage(IMG_VILLAGE, -300 - xShift, -200 - yShift, null);
         ljcnpc.paint(g,xShift,yShift);
         //方法连动 通过李家村的paint方法 调用李逍遥的paint方法

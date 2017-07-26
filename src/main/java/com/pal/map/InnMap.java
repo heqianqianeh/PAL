@@ -13,6 +13,7 @@ import com.pal.dialog.DialogPanel;
 import com.pal.listener.MapMouseListener;
 import com.pal.person.LXY;
 import com.pal.person.NH;
+import com.pal.util.BounardCheckUtil;
 import com.pal.util.MouseUtil;
 
 /**
@@ -79,6 +80,15 @@ public class InnMap extends Map {
 
     @Override
     public void paint(Graphics g) {
+        if (BounardCheckUtil.mapIsLoadLeft(-150, 0, xShift)) {
+            xShift += SHIFT_LENGTH;
+        } else if (BounardCheckUtil.mapIsLoadHead(-250, 0, yShift)) {
+            yShift += SHIFT_LENGTH;
+        } else if (BounardCheckUtil.mapIsLoadRight(170, 0, xShift)) {
+            xShift -= SHIFT_LENGTH;
+        } else if (BounardCheckUtil.mapIsLoadBottom(150, 0, yShift)) {
+            yShift -= SHIFT_LENGTH;
+        }
         g.drawImage(IMG_INN, 0 - xShift, 0 - yShift, null);
         g.drawImage(innHost, 380 - xShift, 280 - yShift, null);
         //方法连动 通过李家村的paint方法 调用李逍遥的paint方法
@@ -119,7 +129,6 @@ public class InnMap extends Map {
 
     @Override
     public int mousePressed(MouseEvent e) {
-        System.out.println(e.getComponent().getName());
         int x = e.getX() + xShift;
         int y = e.getY() + yShift;
         if (x >= 390 && x <= 436 && y >= 285 && y <= 365) {
