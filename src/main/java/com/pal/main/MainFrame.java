@@ -5,8 +5,6 @@ import javax.swing.WindowConstants;
 
 import com.pal.consts.DataConfig;
 import com.pal.listener.MKeyListener;
-import com.pal.listener.MMouseListener;
-import com.pal.map.InnMap;
 import com.pal.map.LJCMap;
 import com.pal.map.Map;
 import com.pal.scene.MainMenu;
@@ -44,7 +42,7 @@ public class MainFrame extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.add(startCartoon);
         this.addKeyListener(new MKeyListener(this));
-        //this.addMouseListener(new MMouseListener(this));
+        this.setResizable(false);
         this.setVisible(true);
         action();
     }
@@ -86,11 +84,11 @@ public class MainFrame extends JFrame {
         repaintCom();
     }
 
-    public com.pal.map.Map getCurrentMap() {
+    public Map getCurrentMap() {
         return currentMap;
     }
 
-    public void setCurrentMap(com.pal.map.Map currentMap) {
+    public void setCurrentMap(Map currentMap) {
         this.currentMap = currentMap;
     }
 
