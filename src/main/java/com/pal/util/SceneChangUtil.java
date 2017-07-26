@@ -4,10 +4,8 @@ import com.pal.consts.Const;
 import com.pal.main.MainFrame;
 
 /**
- * 
  * SceneChangUtil
  * 场景切换的工具类
- * 
  */
 public class SceneChangUtil {
 	
@@ -15,7 +13,7 @@ public class SceneChangUtil {
 	 * 定义场景切换的方法
 	 * @param mainFrame 主框体
 	 * @param fromMap 当前地图
-	 * @param msg 当前地图名称
+	 * @param toMapName 当前地图名称
 	 */
 	public static void changeScene(MainFrame mainFrame, com.pal.map.Map fromMap, String toMapName) {
 	    mainFrame.remove(fromMap);

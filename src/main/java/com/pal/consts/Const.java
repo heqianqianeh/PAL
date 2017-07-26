@@ -15,6 +15,5 @@ public interface Const {
 
     String VILLAGE_LI = "李家村";
     String INN = "客栈";
-    
-    
+    String FOREST = "树林";
 }

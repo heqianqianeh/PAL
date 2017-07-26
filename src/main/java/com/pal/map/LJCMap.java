@@ -22,6 +22,9 @@ public class LJCMap extends Map {
      */
     private static Image IMG_VILLAGE;
 
+    /**
+     * 场景内的静态NPC
+     */
     private LJCNPC ljcnpc;
 
     /**
@@ -44,6 +47,8 @@ public class LJCMap extends Map {
      */
     private boolean isCloseToInn;
 
+    private boolean isCloseToFight;
+
     static {
         try {
             IMG_VILLAGE = ImageIO.read(new File("img\\李家村\\0.png"));
@@ -55,8 +60,6 @@ public class LJCMap extends Map {
     public LJCMap() {
         run();
         ljcnpc = new LJCNPC(this);
-        //鼠标监听事件的注册 必须放在李家村里 不能放在主场景里
-        //this.addMouseListener(this);
     }
 
     @Override
@@ -72,14 +75,19 @@ public class LJCMap extends Map {
         }
 
         g.drawImage(IMG_VILLAGE, -300 - xShift, -200 - yShift, null);
-        ljcnpc.paint(g,xShift,yShift);
+        ljcnpc.paint(g, xShift, yShift);
         //方法连动 通过李家村的paint方法 调用李逍遥的paint方法
         lxy.paint(g);
         int[] xpoints = {715 - xShift, 665 - xShift, 737 - xShift, 771 - xShift};
         int[] ypoints = {283 - yShift, 292 - yShift, 375 - yShift, 310 - yShift};
+
+        int[] xpoints1 = {100 - xShift, 200 - xShift};
+        int[] ypoints1 = {487 - yShift, 587 - yShift};
         //判断李逍遥是否靠近客栈
         Graphics2D g2d = (Graphics2D) g;
         isCloseToInn = g2d.hit(new Rectangle(414, 377, 50, 50), new Polygon(xpoints, ypoints, xpoints.length), true);
+        //判断进入战斗场景
+        isCloseToFight = g2d.hit(new Rectangle(414, 377, 50, 50), new Polygon(xpoints1, ypoints1, xpoints1.length), true);
     }
 
     public void run() {
@@ -119,7 +127,13 @@ public class LJCMap extends Map {
         //重绘
         repaint();
         //从李家村靠近客栈
-        return isCloseToInn ? Const.INN : null;
+        if (isCloseToInn){
+            return Const.INN;
+        }else if (isCloseToFight){
+            return Const.FOREST;
+        }else{
+            return null;
+        }
     }
 
     @Override

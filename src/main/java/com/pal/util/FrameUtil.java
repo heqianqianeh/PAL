@@ -5,6 +5,9 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
+/**
+ * 窗体工具类
+ */
 public class FrameUtil {
 
 	/**

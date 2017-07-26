@@ -25,8 +25,8 @@ public interface DataConfig {
     int MAIN_MENU_BTN_W = ConfigUtil.getIntegerProperties("mainmenu.btn.w");
     int MAIN_MENU_BTN_H = ConfigUtil.getIntegerProperties("mainmenu.btn.h");
 
-     /*================对话框=================*/
-     int DIALOG_W = ConfigUtil.getIntegerProperties("dialog.w");
+    /*================对话框=================*/
+    int DIALOG_W = ConfigUtil.getIntegerProperties("dialog.w");
     int DIALOG_H = ConfigUtil.getIntegerProperties("dialog.h");
     int DIALOG_X = ConfigUtil.getIntegerProperties("dialog.x");
     int DIALOG_Y = ConfigUtil.getIntegerProperties("dialog.y");

@@ -67,15 +67,15 @@ public class MainFrame extends JFrame {
         }).start();
     }
 
-    public void removeCom(Component component) {
+    private void removeCom(Component component) {
         this.remove(component);
     }
 
-    public void addCom(Component component) {
+    private void addCom(Component component) {
         this.add(component);
     }
 
-    public void repaintCom() {
+    private void repaintCom() {
         this.validate();
         this.repaint();
     }
