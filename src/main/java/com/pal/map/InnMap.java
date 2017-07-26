@@ -1,6 +1,11 @@
 package com.pal.map;
 
-import java.awt.*;
+import java.awt.Cursor;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Polygon;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -130,6 +135,12 @@ public class InnMap extends Map {
                     repaint();
                     //判断鼠标位置
                     judgeMouse();
+                    try {
+						Thread.sleep(350);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                 }
             }
         }).start();
