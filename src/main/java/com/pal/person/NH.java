@@ -40,8 +40,8 @@ public class NH {
     static {
         try {
             for (int i = 0; i < IMG_RIGHT_DOWN.length; i++) {
-            	IMG_RIGHT_DOWN[i] = ImageIO.read(new File("img\\女孩右下\\" + i + ".jpg"));
-            	IMG_LEFT_UP[i] = ImageIO.read(new File("img\\女孩左上\\" + i + ".jpg"));
+            	IMG_RIGHT_DOWN[i] = ImageIO.read(new File("img\\女孩右下\\" + i + ".png"));
+            	IMG_LEFT_UP[i] = ImageIO.read(new File("img\\女孩左上\\" + i + ".png"));
             }
         } catch (IOException e) {
             e.printStackTrace();

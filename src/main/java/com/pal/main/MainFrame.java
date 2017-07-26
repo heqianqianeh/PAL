@@ -42,7 +42,7 @@ public class MainFrame extends JFrame {
         init();
         this.setBounds(DataConfig.MAIN_FRAME_X, DataConfig.MAIN_FRAME_Y, DataConfig.MAIN_FRAME_W, DataConfig.MAIN_FRAME_H);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.add(mainMenu);
+        this.add(startCartoon);
         this.addKeyListener(new MKeyListener(this));
         //this.addMouseListener(new MMouseListener(this));
         this.setVisible(true);
