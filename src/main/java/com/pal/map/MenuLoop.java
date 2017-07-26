@@ -10,7 +10,9 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-
+/**
+ * 开机动画
+ */
 public class MenuLoop extends JPanel {
 
     private static Image[] IMG_MENULOOP = new Image[180];

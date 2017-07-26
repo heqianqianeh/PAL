@@ -171,9 +171,7 @@ public class InnMap extends Map {
     private void triggerDialog(MouseEvent e) {
         drawDialog = true;
         dialogPanel = new DialogPanel();
-        dialogPanel.setName("dialog");
         dialogPanel.addMouseListener(mapMouseListener);
-        dialogPanel.setFocusable(true);
         this.validate();
         this.repaint();
     }

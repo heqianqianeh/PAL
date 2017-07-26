@@ -19,7 +19,6 @@ public class MapMouseListener extends MouseAdapter {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println(e.getComponent().getName());
         map.mousePressed(e);
     }
 }

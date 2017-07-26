@@ -20,7 +20,7 @@ public class MMouseListener extends MouseAdapter {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println(e.getX() + "," + e.getY());
+        super.mousePressed(e);
     }
 
     @Override

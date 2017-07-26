@@ -1,10 +1,9 @@
 package com.pal.dialog;
 
-import com.pal.listener.MapMouseListener;
+import com.pal.consts.DataConfig;
 import com.pal.map.Map;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -17,9 +16,6 @@ import java.io.IOException;
  */
 public class DialogPanel extends Map {
 
-    private static final int IMG_W = 782;
-    private static final int IMG_H = 198;
-
     private static Image[] IMG_DIALOG = new Image[3];
 
     private int imgIndex = 0;
@@ -27,7 +23,6 @@ public class DialogPanel extends Map {
     static {
         try {
             for (int i = 0; i < IMG_DIALOG.length; i++) {
-                //TODO
                 IMG_DIALOG[i] = ImageIO.read(new File("img\\对话框\\客栈\\" + i + ".png"));
             }
         } catch (IOException e) {
@@ -36,12 +31,12 @@ public class DialogPanel extends Map {
     }
 
     public DialogPanel() {
-        this.setSize(782, 198);
-        this.setLocation(0, 363);
+        this.setSize(DataConfig.DIALOG_W, DataConfig.MAIN_FRAME_H);
+        this.setLocation(DataConfig.DIALOG_X, DataConfig.DIALOG_Y);
     }
 
     public void paint(Graphics g) {
-        g.drawImage(IMG_DIALOG[imgIndex], 0, 363, IMG_W, IMG_H, null);
+        g.drawImage(IMG_DIALOG[imgIndex], DataConfig.DIALOG_X, DataConfig.DIALOG_Y, DataConfig.DIALOG_W, DataConfig.DIALOG_H, null);
     }
 
     @Override

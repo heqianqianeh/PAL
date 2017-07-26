@@ -44,7 +44,7 @@ public class MainFrame extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.add(mainMenu);
         this.addKeyListener(new MKeyListener(this));
-        this.addMouseListener(new MMouseListener(this));
+        //this.addMouseListener(new MMouseListener(this));
         this.setVisible(true);
         action();
     }
